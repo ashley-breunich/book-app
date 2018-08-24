@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Book Search</title>
-  </head>
+    <head>
+        <%- include('partials/head') %>
+        <title>Book Search</title>
+    </head>
   <body>
+    <%- include('partials/header') %>
     <h1>Count: <%= books.length %></h1>
-    <ul>
-      <% books.forEach((book) => { %>
-        <li><%= book.title %> : <%= book.author %><img src="<%= book.image_url %>" /></li>
-      <% }) %>
-    </ul>
+    <div>
+      <ul>
+        <% books.forEach((book) => { %>
+          <div>
+            <img src="<%= book.image_url %>" />
+            <li><%= book.title %></li>
+            <li><%= book.author %></li>
+            <button class="button" type="button">View Details</button>
+          </div>
+        <% }) %>
+      </ul>
+    </div>
+
+    <%- include('partials/footer') %>
+
   </body>
 </html>

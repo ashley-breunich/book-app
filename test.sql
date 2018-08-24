@@ -55,3 +55,43 @@ VALUES
 INSERT INTO books
 VALUES
 (DEFAULT, 'Sylvia Plath', 'The Bell Jar', 'ISBN_13 9780062444479', 'http://books.google.com/books/content?id=G-f1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'Sylvia Plath''s shocking, realistic, and intensely emotional novel about a woman falling into the grip of insanity Esther Greenwood is brilliant, beautiful, enormously talented, and successful, but slowly going under—maybe for the last time. In her acclaimed and enduring masterwork, Sylvia Plath brilliantly draws the reader into Esther''s breakdown with such intensity that her insanity becomes palpably real, even rational—as accessible an experience as going to the movies. A deep penetration into the darkest and most harrowing corners of the human psyche, The Bell Jar is an extraordinary accomplishment and a haunting American classic.');
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=wnFaWMxXbhMC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=1;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=DzJnT-_OQtAC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=2;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=I8mxughWAOEC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=3;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=PSBdDwAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=4;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=bgpJn-Oq22MC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=5;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=cAYy9_aV4kMC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=6;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=ydQiDQAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=7;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=8VnJLu3AvvQC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=8;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=-D8WBAAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api'
+WHERE id=9;
+
+UPDATE books
+SET image_url = 'http://books.google.com/books/content?id=mf88CwAAQBAJ&printsec=frontcover&img=1&zoom=2&source=gbs_api'
+WHERE id=10;

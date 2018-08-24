@@ -25,9 +25,9 @@ app.get('/ping', (request, response) => {
   response.send('pong');
 });
 
-// app.get('/hello', (request, response) => {
-//   response.render('index');
-// });
+app.get('/hello', (request, response) => {
+  response.render('pages/hello.ejs');
+});
 
 app.get('/books', (request, response) => {
   client.query(`
@@ -38,5 +38,9 @@ app.get('/books', (request, response) => {
       response.render('index', {books : result.rows});
     })
 });
+
+app.get('*', (request,response) =>{
+  response.render('pages/error');
+})
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
