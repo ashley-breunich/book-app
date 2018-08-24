@@ -22,26 +22,21 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/ping', (request, response) => {
-    response.send('pong');
+  response.send('pong');
 });
 
-app.get('/hello', (request, response) => {
-    response.sendfile('index.ejs', {root: './views'});
-});
+// app.get('/hello', (request, response) => {
+//   response.render('index');
+// });
 
-// app.get('/books', (request, response) => {
-//     client.query(`
-//       SELECT title, author, image_url
-//       FROM books
-//     `)
-//       .then(result => {
-//         response.send(result.rows);
-//       })
-//       .catch(err => {
-//         console.error(err)
-//         response.status(500).send(err);
-//       });
-//   });
-  
+app.get('/books', (request, response) => {
+  client.query(`
+      SELECT title, author, image_url
+      FROM books
+    `)
+    .then(result => {
+      response.render('index', {books : result.rows});
+    })
+});
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
