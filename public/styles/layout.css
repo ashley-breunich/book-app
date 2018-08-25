@@ -1,19 +1,24 @@
 header {
-    margin-top: 2em;
+    padding: 35px;
+    background-color: #000000;
 }
 
 header h1 {
-    font-size: 1.7em;
-    letter-spacing: .2px;
+    font-size: 1.9em;
+    letter-spacing: .7px;
 }
 
 #book-count {
-    margin-top: 2em;
+    margin-top: 2.5em;
     margin-bottom: 2em;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .each-book {
-    margin-bottom: 3.5em;
+    margin-bottom: 4.5em;
+}
+
+footer {
+    padding: 50px;
 }
