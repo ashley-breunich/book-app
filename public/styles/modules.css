@@ -1,8 +1,10 @@
 .book-title {
     font-size: 1.6em;
     margin-top: .8em;
-    margin-bottom: .3em;
-    letter-spacing: .4px;
+    margin-bottom: .6em;
+    letter-spacing: .9px;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px #282828;
   }
 
 .book-author {
