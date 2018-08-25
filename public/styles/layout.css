@@ -1,0 +1,35 @@
+header {
+    padding: 35px;
+    background-color: #000000;
+    margin-bottom: 4em;
+}
+
+header h1 {
+    font-size: 1.9em;
+    letter-spacing: .7px;
+}
+
+#error {
+    font-size: 2.5em;
+}
+
+#book-count {
+    margin-bottom: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.each-book {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4.5em;
+    background-color: #D8D8D8;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, .4);
+}
+
+footer {
+    padding: 50px;
+}
