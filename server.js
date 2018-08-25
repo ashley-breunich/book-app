@@ -39,8 +39,19 @@ app.get('/books', (request, response) => {
     })
 });
 
+// app.get('/books/:id', (request, response) => {
+//   client.query(`
+//       SELECT title, author, image_url, isbn, description
+//       FROM books
+//       WHERE id=request.params.id
+//     `)
+//     .then(result => {
+//       response.render('show', {singlebook : result.rows});
+//     })
+// });
+
 app.get('*', (request,response) =>{
   response.render('pages/error');
-})
+});
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));

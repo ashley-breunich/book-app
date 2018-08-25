@@ -13,7 +13,7 @@
             <img src="<%= book.image_url %>" class="book-image"/>
             <p class="book-title"><%= book.title %></p>
             <p class="book-author"><%= book.author %></p>
-            <button class="view-details" type="button">View Details</button>
+            <button class="view-details" type="button" id="book-<% book.id %>">View Details</button>
           </div>
         <% }) %>
     </div>
