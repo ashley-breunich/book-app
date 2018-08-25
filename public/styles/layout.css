@@ -17,6 +17,9 @@ header h1 {
 
 .each-book {
     margin-bottom: 4.5em;
+    background-color: #D8D8D8;
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 
 footer {

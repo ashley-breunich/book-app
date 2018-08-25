@@ -7,17 +7,15 @@
   <body>
     <%- include('partials/header') %>
     <h1 id="book-count">Book Count: <%= books.length %></h1>
-    <div>
-      <ul>
+    <div id="books-populating">
         <% books.forEach((book) => { %>
           <div class="each-book">
             <img src="<%= book.image_url %>" class="book-image"/>
-            <li class="book-title"><%= book.title %></li>
-            <li class="book-author"><%= book.author %></li>
+            <p class="book-title"><%= book.title %></p>
+            <p class="book-author"><%= book.author %></p>
             <button class="view-details" type="button">View Details</button>
           </div>
         <% }) %>
-      </ul>
     </div>
 
     <%- include('partials/footer') %>
