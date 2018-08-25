@@ -6,15 +6,15 @@
     </head>
   <body>
     <%- include('partials/header') %>
-    <h1>Count: <%= books.length %></h1>
+    <h1 id="book-count">Book Count: <%= books.length %></h1>
     <div>
       <ul>
         <% books.forEach((book) => { %>
-          <div>
-            <img src="<%= book.image_url %>" />
-            <li><%= book.title %></li>
-            <li><%= book.author %></li>
-            <button class="button" type="button">View Details</button>
+          <div class="each-book">
+            <img src="<%= book.image_url %>" class="book-image"/>
+            <li class="book-title"><%= book.title %></li>
+            <li class="book-author"><%= book.author %></li>
+            <button class="view-details" type="button">View Details</button>
           </div>
         <% }) %>
       </ul>

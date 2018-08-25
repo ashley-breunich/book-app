@@ -1,0 +1,19 @@
+header {
+    margin-top: 2em;
+}
+
+header h1 {
+    font-size: 1.7em;
+    letter-spacing: .2px;
+}
+
+#book-count {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.each-book {
+    margin-bottom: 3.5em;
+}
