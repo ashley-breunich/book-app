@@ -35,7 +35,7 @@ function getHello(request,response) {
 
 function getBooks(request,response) {
   client.query(`
-      SELECT id, author, title, isbn, image_url, description
+      SELECT id, author, title, image_url
       FROM books;
     `)
     .then(result => {
