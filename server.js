@@ -21,26 +21,39 @@ app.use(express.static('public'));
 // Set the view engine for server-side templating
 app.set('view engine', 'ejs');
 
-app.get('/ping', (request, response) => {
-  response.send('pong');
-});
+app.get('/', getBooks);
+app.get('/hello', getHello);
+app.get('/books', getBooks);
+app.get('/books/:id', getSingleBook);
+app.get('*', getError);
 
-app.get('/hello', (request, response) => {
+app.listen(PORT, () => console.log('Listening on PORT', PORT));
+
+function getHello(request,response) {
   response.render('pages/hello.ejs');
-});
+}
 
-app.get('/books', (request, response) => {
+function getBooks(request,response) {
   client.query(`
-      SELECT title, author, image_url
-      FROM books
+      SELECT id, author, title, image_url
+      FROM books;
     `)
     .then(result => {
       response.render('index', {books : result.rows});
+    });
+}
+
+function getSingleBook(request, response) {
+  let SQL =`SELECT id, author, title, isbn, image_url, description
+  FROM books
+  WHERE id = $1;`
+  let values = [request.params.id];
+  client.query(SQL, values)
+    .then(result =>{
+      response.render('show', {singlebook: result.rows});
     })
-});
+}
 
-app.get('*', (request,response) =>{
+function getError(request, response) {
   response.render('pages/error');
-})
-
-app.listen(PORT, () => console.log('Listening on PORT', PORT));
+}
