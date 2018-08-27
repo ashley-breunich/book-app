@@ -21,12 +21,10 @@ app.use(express.static('public'));
 // Set the view engine for server-side templating
 app.set('view engine', 'ejs');
 
+app.get('/', getBooks);
 app.get('/hello', getHello);
-
 app.get('/books', getBooks);
-
 app.get('/books/:id', getSingleBook);
-
 app.get('*', getError);
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
@@ -37,8 +35,8 @@ function getHello(request,response) {
 
 function getBooks(request,response) {
   client.query(`
-      SELECT title, author, image_url, id
-      FROM books
+      SELECT id, author, title, isbn, image_url, description
+      FROM books;
     `)
     .then(result => {
       response.render('index', {books : result.rows});
@@ -46,14 +44,14 @@ function getBooks(request,response) {
 }
 
 function getSingleBook(request, response) {
-  client.query(`
-      SELECT title, author, image_url, isbn, description
-      FROM books
-      WHERE id=request.params.id;
-    `)
-    .then(result => {
-      response.render('show', {singlebook : result.rows});
-    });
+  let SQL =`SELECT id, author, title, isbn, image_url, description
+  FROM books
+  WHERE id = $1;`
+  let values = [request.params.id];
+  client.query(SQL, values)
+    .then(result =>{
+      response.render('show', {singlebook: result.rows});
+    })
 }
 
 function getError(request, response) {
