@@ -30,3 +30,22 @@
 .button:hover {
     background-color: #505050; 
 }
+
+.individual-page {
+    background-color: #000000;
+    font-size: 1.1em;
+    border: none;
+    color: #ffffff;
+    padding: 25px 35px 25px 35px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.individual-page a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.individual-page:hover {
+    background-color: #505050; 
+}
