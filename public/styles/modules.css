@@ -1,5 +1,5 @@
 .book-title {
-    font-size: 1.6em;
+    font-size: 1.9em;
     margin-top: .8em;
     margin-bottom: .6em;
     letter-spacing: .9px;
@@ -8,7 +8,7 @@
   }
 
 .book-author {
-    font-size: 1em;
+    font-size: 1.3em;
     font-style: italic;
     color: #282828;
 }
@@ -29,4 +29,42 @@
 
 .button:hover {
     background-color: #505050; 
+}
+
+.individual-page {
+    background-color: #000000;
+    font-size: 1.1em;
+    border: none;
+    color: #ffffff;
+    padding: 25px 35px 25px 35px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.individual-page a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.individual-page:hover {
+    background-color: #505050; 
+}
+
+.book-description {
+    color: #282828;
+    font-size: 1.1em;
+    line-height: 1.4em;
+    margin-top: 1.5em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.book-isbn {
+    color: #282828;
+    font-size: .9em;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-top: 1.7em;
 }

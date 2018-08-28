@@ -49,9 +49,9 @@ function getSingleBook(request, response) {
   WHERE id = $1;`
   let values = [request.params.id];
   client.query(SQL, values)
-    .then(result =>{
+    .then(result => {
       response.render('show', {singlebook: result.rows});
-    })
+    });
 }
 
 function getError(request, response) {
