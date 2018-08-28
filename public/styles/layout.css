@@ -1,12 +1,14 @@
 header {
-    padding: 35px;
+    padding: 3em;
     background-color: #000000;
     margin-bottom: 4em;
 }
 
 header h1 {
     font-size: 1.9em;
-    letter-spacing: .7px;
+    letter-spacing: .05em;
+    text-align: left;
+    margin-left: 1em;
 }
 
 #error {
@@ -16,7 +18,7 @@ header h1 {
 #book-count {
     margin-bottom: 2.5em;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: .4em;
 }
 
 .each-book {
@@ -31,5 +33,5 @@ header h1 {
 }
 
 footer {
-    padding: 50px;
+    padding: 4em;
 }
