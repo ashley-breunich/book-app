@@ -27,7 +27,7 @@ app.get('/books', getBooks);
 app.get('/books/:id', getSingleBook);
 app.get('/new', newBook);
 app.get('*', getError);
-app.post('/books', postBook);
+// app.post('/books', postBook);
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
 
