@@ -25,8 +25,9 @@ app.get('/', getBooks);
 app.get('/hello', getHello);
 app.get('/books', getBooks);
 app.get('/books/:id', getSingleBook);
-app.get('/new', newBook)
+app.get('/new', newBook);
 app.get('*', getError);
+app.post('/books', postBook);
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
 
@@ -58,6 +59,19 @@ function getSingleBook(request, response) {
 function newBook(request, response) {
   response.render('new');
 }
+
+// function postBook(request, response) {
+//   let {name, author, isbn, image, description} = request.body;
+//   let SQL = `
+//     INSERT INTO books
+//     (name, author, isbn, image, description)
+//     VALUES ($1, $2, $3, $4, $5);
+//   `;
+//   let values = [name, author, isbn, image, description];
+//   return client.query(SQL, values)
+//     .then(response.redirect('/books'))
+//     .catch(err => getError(err, response));
+// }
 
 function getError(request, response) {
   response.render('pages/error');
