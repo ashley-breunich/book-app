@@ -25,6 +25,7 @@ app.get('/', getBooks);
 app.get('/hello', getHello);
 app.get('/books', getBooks);
 app.get('/books/:id', getSingleBook);
+app.get('/new', newBook)
 app.get('*', getError);
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
@@ -52,6 +53,10 @@ function getSingleBook(request, response) {
     .then(result => {
       response.render('show', {singlebook: result.rows});
     });
+}
+
+function newBook(request, response) {
+  response.render('new');
 }
 
 function getError(request, response) {

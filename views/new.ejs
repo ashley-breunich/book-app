@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('partials/head') %>
+        <title>New Book</title>
+    </head>
+  <body>
+    <%- include('partials/header') %>
+    <main>
+      <section class="create-view container">
+        <h2 class="header-two">Add a New Book</h2>
+        <form id="add-new-book" action="/new" method="post">
+          <input type="text" name="name" placeholder="Title">
+          <input type="text" name="author" placeholder="Author">
+          <input type="text" name="isbn" placeholder="ISBN">
+          <input type="text" name="image" placeholder="Image URL">
+          <textarea name="description" placeholder="Book Description" cols="30" rows="10"></textarea>
+          <button type="submit" class="button">Add This Book</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
