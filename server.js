@@ -16,6 +16,8 @@ client.connect();
 client.on('error', err => console.error(err));
 
 // Serve static files
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Set the view engine for server-side templating
@@ -26,8 +28,8 @@ app.get('/hello', getHello);
 app.get('/books', getBooks);
 app.get('/books/:id', getSingleBook);
 app.get('/new', newBook);
+app.post('/new', postBook);
 app.get('*', getError);
-// app.post('/books', postBook);
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
 
@@ -52,26 +54,25 @@ function getSingleBook(request, response) {
   let values = [request.params.id];
   client.query(SQL, values)
     .then(result => {
-      response.render('show', {singlebook: result.rows});
+      response.render('show', {books: result.rows});
+    });
+}
+
+function postBook(request, response) {
+  let {author, title, isbn, image_url, description} = request.body;
+  let SQL = `INSERT INTO books
+  (author, title, isbn, image_url, description)
+  VALUES ($1, $2, $3, $4, $5);`;
+  let values = [author, title, isbn, image_url, description];
+  client.query(SQL, values)
+    .then(result => {
+      response.render('show', {books : result.rows});
     });
 }
 
 function newBook(request, response) {
   response.render('new');
 }
-
-// function postBook(request, response) {
-//   let {name, author, isbn, image, description} = request.body;
-//   let SQL = `
-//     INSERT INTO books
-//     (name, author, isbn, image, description)
-//     VALUES ($1, $2, $3, $4, $5);
-//   `;
-//   let values = [name, author, isbn, image, description];
-//   return client.query(SQL, values)
-//     .then(response.redirect('/books'))
-//     .catch(err => getError(err, response));
-// }
 
 function getError(request, response) {
   response.render('pages/error');

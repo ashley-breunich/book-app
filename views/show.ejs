@@ -8,7 +8,7 @@
     <%- include('partials/header') %>
     <button class="individual-page" type="button"><a href="/books">View All Books</a></button>
     <div id="single-book">
-        <% singlebook.forEach((book) => { %>
+        <% books.forEach((book) => { %>
         <div class="each-book">
             <img src="<%= book.image_url %>" class="book-image"/>
             <p class="book-title"><%= book.title %></p>
