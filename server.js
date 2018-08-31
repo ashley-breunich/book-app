@@ -16,6 +16,7 @@ client.connect();
 client.on('error', err => console.error(err));
 
 // Serve static files
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Set the view engine for server-side templating
@@ -25,7 +26,9 @@ app.get('/', getBooks);
 app.get('/hello', getHello);
 app.get('/books', getBooks);
 app.get('/books/:id', getSingleBook);
-app.get('/new', newBook)
+app.get('/new', newBook);
+app.post('/books', postBook);
+
 app.get('*', getError);
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
@@ -51,8 +54,25 @@ function getSingleBook(request, response) {
   let values = [request.params.id];
   client.query(SQL, values)
     .then(result => {
-      response.render('show', {singlebook: result.rows});
+      response.render('show', {books: result.rows});
     });
+}
+
+function postBook(request, response) {
+  let {author, title, isbn, image_url, description} = request.body;
+  let SQL = `INSERT INTO books
+  (author, title, isbn, image_url, description)
+  VALUES ($1, $2, $3, $4, $5);`;
+  let values = [author, title, isbn, image_url, description];
+  return client.query(SQL, values)
+    .then(() => {
+      SQL = `SELECT * FROM books WHERE isbn=$1;`;
+      values = [request.body.isbn];
+      return client.query(SQL, values)
+        .then(result => response.render('show', {books : result.rows, message : `This book has been added to your saved list!`}))
+        .catch(getError);
+    })
+    .catch(getError);
 }
 
 function newBook(request, response) {
