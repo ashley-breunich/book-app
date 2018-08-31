@@ -7,16 +7,17 @@
   <body>
     <%- include('partials/header') %>
     <button class="individual-page" type="button"><a href="/books">View All Books</a></button>
+    <% if(message) { %>
+        <h3><%= message %></h3>
+    <% } %>
     <div id="single-book">
-        <% books.forEach((book) => { %>
         <div class="each-book">
-            <img src="<%= book.image_url %>" class="book-image"/>
-            <p class="book-title"><%= book.title %></p>
-            <p class="book-author"><%= book.author %></p>
-            <p class="book-description"><%= book.description %></p>
-            <p class="book-isbn"><%= book.isbn %></p>
+            <img src="<%= books.image_url %>" class="book-image"/>
+            <p class="book-title"><%= books.title %></p>
+            <p class="book-author"><%= books.author %></p>
+            <p class="book-description"><%= books.description %></p>
+            <p class="book-isbn"><%= books.isbn %></p>
         </div>
-        <% }); %>
     </div>
     <%- include('partials/footer') %>
   </body>
