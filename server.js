@@ -54,7 +54,7 @@ function getSingleBook(request, response) {
   let values = [request.params.id];
   client.query(SQL, values)
     .then(result => {
-      response.render('show', {books: result.rows});
+      response.render('show', {books: result.rows[0], message: ''});
     });
 }
 
@@ -69,7 +69,7 @@ function postBook(request, response) {
       SQL = `SELECT * FROM books WHERE isbn=$1;`;
       values = [request.body.isbn];
       return client.query(SQL, values)
-        .then(result => response.render('show', {books : result.rows, message : `This book has been added to your saved list!`}))
+        .then(result => response.render('show', {books : result.rows[0], message : `This book has been added to your saved list!`}))
         .catch(getError);
     })
     .catch(getError);
