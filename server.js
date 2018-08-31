@@ -16,7 +16,6 @@ client.connect();
 client.on('error', err => console.error(err));
 
 // Serve static files
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
@@ -28,7 +27,8 @@ app.get('/hello', getHello);
 app.get('/books', getBooks);
 app.get('/books/:id', getSingleBook);
 app.get('/new', newBook);
-app.post('/new', postBook);
+app.post('/books', postBook);
+
 app.get('*', getError);
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
@@ -64,10 +64,15 @@ function postBook(request, response) {
   (author, title, isbn, image_url, description)
   VALUES ($1, $2, $3, $4, $5);`;
   let values = [author, title, isbn, image_url, description];
-  client.query(SQL, values)
-    .then(result => {
-      response.render('show', {books : result.rows});
-    });
+  return client.query(SQL, values)
+    .then(() => {
+      SQL = `SELECT * FROM books WHERE isbn=$1;`;
+      values = [request.body.isbn];
+      return client.query(SQL, values)
+        .then(result => response.render('show', {books : result.rows, message : `This book has been added to your saved list!`}))
+        .catch(getError);
+    })
+    .catch(getError);
 }
 
 function newBook(request, response) {
