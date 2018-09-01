@@ -27,6 +27,7 @@ app.get('/hello', getHello);
 app.get('/books', getBooks);
 app.get('/books/:id', getSingleBook);
 app.get('/new', newBook);
+app.get('/searches/new', newSearch);
 app.post('/books', postBook);
 
 app.get('*', getError);
@@ -77,6 +78,10 @@ function postBook(request, response) {
 
 function newBook(request, response) {
   response.render('new');
+}
+
+function newSearch(request, response) {
+  response.render('pages/newsearch');
 }
 
 function getError(request, response) {
