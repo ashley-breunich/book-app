@@ -5,6 +5,7 @@ require('dotenv').config();
 // Application Dependencies
 const express = require('express');
 const pg = require('pg');
+const superagent = require('superagent');
 
 // Application Setup
 const app = express();
@@ -29,6 +30,7 @@ app.get('/books/:id', getSingleBook);
 app.get('/new', newBook);
 app.get('/searches/new', newSearch);
 app.post('/books', postBook);
+app.post('/searches', apiSearch);
 
 app.get('*', getError);
 
@@ -74,6 +76,15 @@ function postBook(request, response) {
         .catch(getError);
     })
     .catch(getError);
+}
+
+function apiSearch(request, response) {
+  let url = 'https://www.googleapis.com/books/v1/volumes'
+  let query = '';
+  let modifiedRequest = request.body.search[0].split(' ').join('+');
+
+  if (request.body.search[1] === 'title') query += `+intitle:${modifiedRequest}`;
+  if (request.body.search[1] === 'author') query += `+inauthor:${modifiedRequest}`;
 }
 
 function newBook(request, response) {
