@@ -82,5 +82,11 @@ nav:hover ul {
 }
 
 footer {
-    padding: 4em;
+    padding-top: .4em;
+    padding-bottom: 4.5em;
+}
+
+.message {
+    font-size: 1.3em;
+    margin-bottom: 1.8em;
 }
