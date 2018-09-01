@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%- include('/partials/head') %>
+        <%- include('../../partials/head') %>
         <title>Book Details</title>
     </head>
   <body>
-    <%- include('partials/header') %>
+    <%- include('../../partials/header') %>
     <button class="individual-page" type="button"><a href="/books">View All Books</a></button>
     <% if(message) { %>
         <h3 class="message"><%= message %></h3>
@@ -19,6 +19,6 @@
             <p class="book-isbn"><%= books.isbn %></p>
         </div>
     </div>
-    <%- include('partials/footer') %>
+    <%- include('../../partials/footer') %>
   </body>
 </html>
