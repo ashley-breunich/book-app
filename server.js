@@ -57,7 +57,7 @@ function getSingleBook(request, response) {
   let values = [request.params.id];
   client.query(SQL, values)
     .then(result => {
-      response.render('show', {books: result.rows[0], message: ''});
+      response.render('pages/books/show', {books: result.rows[0], message: ''});
     });
 }
 
@@ -72,7 +72,7 @@ function postBook(request, response) {
       SQL = `SELECT * FROM books WHERE isbn=$1;`;
       values = [request.body.isbn];
       return client.query(SQL, values)
-        .then(result => response.render('show', {books : result.rows[0], message : `This book has been added to your saved list!`}))
+        .then(result => response.render('pages/books/show', {books : result.rows[0], message : `This book has been added to your saved list!`}))
         .catch(getError);
     })
     .catch(getError);
@@ -85,14 +85,34 @@ function apiSearch(request, response) {
 
   if (request.body.search[1] === 'title') query += `+intitle:${modifiedRequest}`;
   if (request.body.search[1] === 'author') query += `+inauthor:${modifiedRequest}`;
+
+  superagent.get(url)
+    .query({'q': query})
+    .then(apiResponse => apiResponse.body.items.map(bookResult => {
+      let { title, subtitle, authors, industryIdentifiers, imageLinks, description } = bookResult.volumeInfo;
+      
+      let placeholderImage = 'http://www.newyorkpaddy.com/images/covers/NoCoverAvailable.jpg';
+
+      return {
+        title: title ? title : 'No title available',
+        subtitle: subtitle ? subtitle : '',
+        author: authors ? authors[0] : 'No authors available',
+        isbn: industryIdentifiers ? `ISBN_13 ${industryIdentifiers[0].identifier}` : 'No ISBN available',
+        image_url: imageLinks ? imageLinks.smallThumbnail : placeholderImage,
+        description: description ? description : 'No description available',
+        id: industryIdentifiers ? `${industryIdentifiers[0].identifier}` : '',
+      };
+    }))
+    .then(bookInfo => response.render('pages/books/show', {results: bookInfo}))
+    .catch(getError);
 }
 
 function newBook(request, response) {
-  response.render('new');
+  response.render('pages/books/new');
 }
 
 function newSearch(request, response) {
-  response.render('pages/newsearch');
+  response.render('pages/searches/new');
 }
 
 function getError(request, response) {
