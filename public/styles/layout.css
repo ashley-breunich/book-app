@@ -12,18 +12,33 @@ header h1 {
     font-size: 1.9em;
     letter-spacing: .05em;
     margin-left: 1em;
+    clear: both;
 }
 
-.main-naviation ul {
-    display: inline;
+.icon-menu {
+    font-size: 3em;
+    float: right;
+    margin-bottom: .4em;
 }
 
-.main-navigation ul li {
+nav ul {
+    display: none;
+    padding: 0;
+    list-style: none;
+    clear: both;
+}
+  
+nav li {
+    margin-right: .4em;
     font-size: 1em;
     text-transform: uppercase;
-    letter-spacing: .15em;
-    float: right;
-    margin-left: 2em;
+    letter-spacing: .1em;
+    padding: 1em .9em;
+    border-bottom: .5px solid #ffffff;
+}
+
+nav:hover ul {
+    display: block;
 }
 
 .main-navigation ul li a {
