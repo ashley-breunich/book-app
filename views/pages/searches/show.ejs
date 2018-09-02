@@ -7,32 +7,31 @@
   <body>
     <%- include('../../partials/header') %>
     <h2 class="header-two">Search Results</h2>
-    <ul class="search-results">
-        <% results.forEach(book => { %>
-          <li data-book-id="<%= book.isbn %>">
-            <div class="book-container">
-              <img src=<%= book.image_url %>>
-              <section>
-              <% if (book.subtitle) { %>
-                <h3><%= book.title %>: <%= book.subtitle %></h3>
-              <% } else { %>
-                <h3><%= book.title %></h3>
-              <% } %>
-                <span><%= book.author %></span>
-                <p class="desc"><%= book.description %></p>        
-              </section>
+    <div id="books-populating">
+      <% results.forEach(book => { %>
+        <div class="each-book">
+          <p class="book-isbn"><%= book.isbn %></p>
+          <img src="<%= book.image_url %>" class="book-image"/>
+          <section>
+            <% if (book.subtitle) { %>
+              <p class="book-title"><%= book.title %>: <%= book.subtitle %></p>
+            <% } else { %>
+              <p class="book-title"><%= book.title %></p>
+            <% } %>
+              <p class="book-author"><%= book.author %></p>
+              <p class="book-description"><%= book.description %></p>
             </section>
-            <form id="hide-me" action="/books" method="post">
+            <form id="hide-mexxx" action="/books" method="post">
               <input type="text" name="title" value="<%= book.title %>">
               <input type="text" name="author" value="<%= book.author %>">
               <input type="text" name="isbn" value="<%= book.isbn %>">
               <input type="text" name="image_url" value="<%= book.image_url %>">
-              <textarea name="description" value="<%= book.description %>" cols="30" rows="5"></textarea>
-              <button id="show-me" type="submit">Add to Database</button>
+              <textarea name="description" value="<%= book.description %>" cols="30" rows="5"><%= book.description %></textarea>
+              <button type="submit" id="show-me" class="button">Add to Database</button>
             </form>
-          </li>
-        <% }) %>
-      </ul>
+        </div>
+      <% }) %>
+  </div>
     <%- include('../../partials/footer') %>
   </body>
 </html>

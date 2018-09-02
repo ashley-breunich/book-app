@@ -88,6 +88,14 @@
    margin-bottom: 1.3em;
 }
 
+#hide-me input, #hide-me textarea {
+    display: none;
+}
+
+form button {
+    display: inline-block;
+}
+
 @media only screen and (min-width: 640px) {
     .icon-menu {
       display: none;

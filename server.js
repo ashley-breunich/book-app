@@ -31,6 +31,7 @@ app.get('/new', newBook);
 app.get('/searches/new', newSearch);
 app.post('/books', postBook);
 app.post('/searches', apiSearch);
+app.put('/books/:id', updateBook);
 
 app.get('*', getError);
 
@@ -62,6 +63,7 @@ function getSingleBook(request, response) {
 }
 
 function postBook(request, response) {
+  console.log('body=equals', request.body);
   let {author, title, isbn, image_url, description} = request.body;
   let SQL = `INSERT INTO books
   (author, title, isbn, image_url, description)
@@ -103,7 +105,17 @@ function apiSearch(request, response) {
         id: industryIdentifiers ? `${industryIdentifiers[0].identifier}` : '',
       };
     }))
-    .then(bookInfo => response.render('pages/books/show', {results: bookInfo}))
+    .then(bookInfo => response.render('pages/searches/show', {results: bookInfo}))
+    .catch(getError);
+}
+
+function updateBook(request, response) {
+  let {title, author, isbn, image_url, description} = request.body;
+  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 WHERE id=$6;`;
+  let values = [title, author, isbn, image_url, description, request.params.id];
+
+  return client.query(SQL, values)
+    .then(response.render('pages/books/show', {book: {}, message: 'Your book has been updated!'}))
     .catch(getError);
 }
 
