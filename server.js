@@ -92,7 +92,7 @@ function apiSearch(request, response) {
     .query({'q': query})
     .then(apiResponse => apiResponse.body.items.map(bookResult => {
       let { title, subtitle, authors, industryIdentifiers, imageLinks, description } = bookResult.volumeInfo;
-      
+
       let placeholderImage = 'http://www.newyorkpaddy.com/images/covers/NoCoverAvailable.jpg';
 
       return {
