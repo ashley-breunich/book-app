@@ -1,7 +1,10 @@
 .book-title {
+    width: 80%;
     font-size: 1.9em;
     margin-top: .8em;
     margin-bottom: .6em;
+    margin-left: auto;
+    margin-right: auto;
     letter-spacing: .9px;
     color: #ffffff;
     text-shadow: 1px 1px 5px #282828;
@@ -58,7 +61,7 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: center;
 }
 
 .book-isbn {
@@ -73,7 +76,6 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 4em;
 }
 
 .field-entry {
@@ -95,6 +97,32 @@
 form button {
     display: inline-block;
 }
+
+#search-form {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=radio] {
+    display: inline-block;
+    font-size: 2em;
+    width: auto;
+  }
+
+  fieldset {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  fieldset label {
+    font-size: 1.2em;
+  }
 
 @media only screen and (min-width: 640px) {
     .icon-menu {

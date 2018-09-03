@@ -10,7 +10,6 @@
     <div id="books-populating">
       <% results.forEach(book => { %>
         <div class="each-book">
-          <p class="book-isbn"><%= book.isbn %></p>
           <img src="<%= book.image_url %>" class="book-image"/>
           <section>
             <% if (book.subtitle) { %>
@@ -20,8 +19,9 @@
             <% } %>
               <p class="book-author"><%= book.author %></p>
               <p class="book-description"><%= book.description %></p>
+              <p class="book-isbn"><%= book.isbn %></p>
             </section>
-            <form id="hide-mexxx" action="/books" method="post">
+            <form id="hide-me" action="/books" method="post">
               <input type="text" name="title" value="<%= book.title %>">
               <input type="text" name="author" value="<%= book.author %>">
               <input type="text" name="isbn" value="<%= book.isbn %>">
