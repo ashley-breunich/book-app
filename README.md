@@ -10,17 +10,31 @@ Version 1.0.0 - In this application, we wanted to demonstrate our ability to do 
 
 Version 2.0.0 - In our latest iteration of the book application, we wanted to add the ability for the users to see the details of a single book (in a new view). We also modified our code base to be modular, allowing us to have much dryier code. 
 
+Version 3.0.0 - This update gives the ability for the user to add a new book to their database by filling in a form, allowing for continuous growth of their collection. Feedback is provided to the user upon successful (or lack there of) additon of said book to their database. Further styling and UI/UX improvements of the application was done. 
+
+Version 4.0.0 - Site improvements were made to multiple aspects of our code and CSS styling, as well as implimentation of Google Books third-party API. This will allow users to search by aurthor or title, and the ability to add the searched book to the database. 
+
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
 Version 1.0.0 - They would need to run quite a few different sets of software to build and deploy the application. These include, but are not limited to, running PSQL, Jest, npm, and liveserver. However, if the client simply wants to browse the application, they can simply go to https://ab-mm-booklist.herokuapp.com/ once it's live.
 
-Version 2.0.0 - No new features were added that would require additional software.
+Version 2.0.0 - No new features added that would require additional software.
+
+Version 3.0.0 - Understanding of HTML5 and form validation, as well as an understanding of version 1.0.0 and it's associated software.
+
+Version 4.0.0 - Uer's would need an understanding of third-party API implimentation and use of superagent. 
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 Version 1.0.0 - We used multiple software applications to build this site. Primary development was done with Visual Studio Code. Repositories were set up via GitHub, and our application was deployed using Heroku. Our book database was configured using PostgreSQL. We also focused on a "mobile first" approach, ensuring proper use of SMACCS principles.
+
+Version 2.0.0 - We added an endpoint for a GET request to /books/:id, allowing the user to click on a "details" button and view data points about the book queried. Consistent rendering was done by moving our SQL queries and view rendering into callbacks, and "partials" folders were populated with files that are the same across each view. Styling of the application was implimented using SMACCS principles. 
+
+Version 3.0.0 - Adding a new book to the users collection required us to impliment HTML5 form validation. To added a new book, we created an ejs containing a form in which users are able to enter the details of their new book. A hamburger menu was added to ensure users could access the navigation portion of the page, regardless of their display width.    
+
+Version 4.0.0 - Search via implimentation of the Google Books API was given (via superagent) so that users could search for books by author or title, view the results, and add any book they found to their database list holding the books they saved. To do this, we gave uers a new search field in new.ejs. Search is currently restricted to the first 10 results from Google Books, but expainsion of this list is possible in future updates.  
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
@@ -35,5 +49,10 @@ https://jestjs.io/#use
 https://google.com so many googles
 https://stackoverflow.com/ all of it
 https://devcenter.heroku.com/articles/heroku-postgresql
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation#Using_built-in_form_validation
+JB: Google Sensei 
+https://developers.google.com/books/docs/v1/getting_started
+https://visionmedia.github.io/superagent/
 
 -->
